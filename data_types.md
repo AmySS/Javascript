@@ -205,6 +205,7 @@ var b1 = Boolean(new object()); //true - 对象
 ```
 
     2. Number() 函数
+
     |        用法      |    结果    |
     |      --------   |  --------  |
     |  Number(false) |  0  |
