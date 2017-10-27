@@ -9,7 +9,7 @@
 ---
 ## 数据类型
 最新的 ECMAScript 标准定义了 7 种数据类型，其中有6种为原始类型。
-1. 原始值数据类型
+## 1. 原始值数据类型
 * Boolean
 * Null
 * Undefined
@@ -17,7 +17,6 @@
 * String
 * Symbol (ECMAScript 6 新定义)
 
->>>
 ### typeof 运算符
 对变量或值调用 typeof 运算符将返回下列值之一：
 * undefined - 如果变量是 Undefined 类型的
@@ -85,7 +84,7 @@ typeof Math.sin === 'function';
 typeof 1/0 === 'NaN';
 ```
 
-2. 引用值数据类型
+## 2. 引用值数据类型
 
 * Object
 
@@ -118,12 +117,12 @@ myDate instanceof Object;   // returns true
 myDate instanceof String;   // returns false
 ```
 
-3. 原始值与引用值的区分
+## 3. 原始值与引用值的区分
 区别两种类型的直接特征是：**存储位置**。
 
-## 原始值
+### 原始值
 存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。
-## 引用值
+### 引用值
 存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。
 
 为变量赋值时，ECMAScript的解释程序必须判断该值是原始类型，还是引用类型。要实现这一点，解释程序则需尝试判断该值是否为 ECMAScript 的原始类型之一，即 Undefined、Null、Boolean、Number 和 String 型。
@@ -135,5 +134,5 @@ myDate instanceof String;   // returns false
 
 ![Alt text](./resources/stack_heap.gif)
 
-4. 类型转换
+## 4. 类型转换
 
