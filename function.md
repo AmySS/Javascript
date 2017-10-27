@@ -1,5 +1,7 @@
-# usage of function #
-* difference between a function expression vs declaration
+# Usage of Function #
+* function: difference between a function expression vs declaration
+* function*
+* async function
 
 ---
 
