@@ -1,4 +1,4 @@
-# Data Types and Data Structures in JavaScript
+# Data Types in JavaScript
 * 数据类型
     - 原始值数据类型
     - 引用值数据类型
@@ -26,7 +26,9 @@
 * symbol - 如果值为Symbol类型(ES6新增)
 * object - 如果变量是一种引用类型或 Null 类型的
 * function - 函数对象
+
 **注释：**您也许会问，为什么 typeof 运算符对于 null 值会返回 "Object"。
+
 这实际上是 JavaScript最初实现中的一个错误，然后被 ECMAScript 沿用了。现在，null 被认为是对象的占位符，从而解释了这一矛盾，但从技术上来说，它仍然是原始值。
 
 ### usage examples
@@ -135,4 +137,94 @@ myDate instanceof String;   // returns false
 ![Alt text](./resources/stack_heap.gif)
 
 ## 4. 类型转换
+
+* 转换成字符串: toString()
+    - arrayObject.toString()
+    - booleanObject.toString()
+    - dateObject.toString()
+    - NumberObject.toString()
+    - stringObject.toString()
+
+* 转换成数字
+    - parseInt()
+    - parseFloat()
+    - usage examples
+
+    1. parseInt()
+
+    ```javascript
+    var iNum1 = parseInt("12345red");   //返回 12345
+    var iNum1 = parseInt("0xA");    //返回 10
+    var iNum1 = parseInt("56.9");   //返回 56
+    var iNum1 = parseInt("red");    //返回 NaN
+    //parseInt()方法还有基模式，可以把二进制、八进制、十六进制或其他任何进制的字符串转换成整数。
+    //基是由parseInt() 方法的第二个参数指定的，所以要解析十六进制的值，需如下调用 parseInt() 方法：
+    var iNum1 = parseInt("AF", 16); //返回 175
+    //当然，对二进制、八进制甚至十进制（默认模式），都可以这样调用 parseInt() 方法：
+    var iNum1 = parseInt("10", 2);  //返回 2
+    var iNum2 = parseInt("10", 8);  //返回 8
+    var iNum3 = parseInt("10", 10); //返回 10
+    //如果十进制数包含前导 0，那么最好采用基数 10，这样才不会意外地得到八进制的值。例如：
+    var iNum1 = parseInt("010");    //返回 8
+    var iNum2 = parseInt("010", 8); //返回 8
+    var iNum3 = parseInt("010", 10);    //返回 10
+
+    ```
+
+    2. parseFloat()
+
+    使用 parseFloat()方法的另一不同之处在于，字符串必须以十进制形式表示浮点数，而不是用八进制或十六进制。
+    该方法会忽略前导 0，所以八进制数 0102 将被解析为 102。对于十六进制数 0xA，该方法将返回NaN，因为在浮点数中，x 不是有效字符。
+    （注释：经测试，具体的浏览器实现会返回 0，而不是 NaN。）
+
+    ```javascript
+    var fNum1 = parseFloat("12345red"); //返回 12345
+    var fNum2 = parseFloat("0xA");  //返回 NaN
+    var fNum3 = parseFloat("11.2"); //返回 11.2
+    var fNum4 = parseFloat("11.22.33"); //返回 11.22
+    var fNum5 = parseFloat("0102"); //返回 102
+    var fNum1 = parseFloat("red");  //返回 NaN
+    ```
+
+* 强制转换
+ECMAScript 中可用的 3 种强制类型转换如下：
+    - Boolean(value) - 把给定的值转换成 Boolean 型；
+    - Number(value) - 把给定的值转换成数字（可以是整数或浮点数）；
+    - String(value) - 把给定的值转换成字符串；
+用这三个函数之一转换值，将创建一个新值，存放由原始值直接转换成的值。这会造成意想不到的后果。
+
+    - usage examples
+
+    1. Boolean() 函数
+```javascript
+var b1 = Boolean("");       //false - 空字符串
+var b2 = Boolean("hello");      //true - 非空字符串
+var b1 = Boolean(50);       //true - 非零数字
+var b1 = Boolean(null);     //false - null
+var b1 = Boolean(0);        //false - 零
+var b1 = Boolean(new object()); //true - 对象
+```
+
+    2. Number() 函数
+    |        用法      |    结果    |
+    |      --------   |  --------  |
+    |  Number(false) |  0  |
+    |  Number(true)  |  1 |
+    |  Number(undefined)  |  NaN |
+    |  Number(null)  |  0 |
+    |  Number("1.2")  | 1.2  |
+    |  Number("12")  |  12 |
+    |  Number("1.2.3")  | NaN |
+    |  Number(new object())  | NaN |
+    |  Number(50)     | 50 |
+
+
+    3. String() 函数
+强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：
+
+```javascript
+var s1 = String(null);  //"null"
+var oNull = null;
+var s2 = oNull.toString();  //会引发错误
+```
 
