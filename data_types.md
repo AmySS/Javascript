@@ -27,7 +27,7 @@
 * object - 如果变量是一种引用类型或 Null 类型的
 * function - 函数对象
 
-** 注释： **您也许会问，为什么 typeof 运算符对于 null 值会返回 "Object"。
+**注释：** 您也许会问，为什么 typeof 运算符对于 null 值会返回 "Object"。
 
 这实际上是 JavaScript最初实现中的一个错误，然后被 ECMAScript 沿用了。现在，null 被认为是对象的占位符，从而解释了这一矛盾，但从技术上来说，它仍然是原始值。
 
