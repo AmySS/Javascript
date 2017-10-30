@@ -224,6 +224,7 @@ var b1 = Boolean(new object()); //true - 对象
 | Number("1.2") | 1.2  |
 | Number("12")  | 12 |
 | Number("1.2.3")  | NaN |
+| Number("12345red")  | NaN |
 | Number(new object())  | NaN |
 | Number(50)     | 50 |
 
