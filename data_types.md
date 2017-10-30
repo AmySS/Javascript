@@ -193,52 +193,51 @@ myDate instanceof String;   // returns false
 
 ECMAScript 中可用的 3 种强制类型转换如下：
 
-    - Boolean(value) - 把给定的值转换成 Boolean 型；
-    - Number(value) - 把给定的值转换成数字（可以是整数或浮点数）；
-    - String(value) - 把给定的值转换成字符串；
+- Boolean(value) - 把给定的值转换成 Boolean 型；
+- Number(value) - 把给定的值转换成数字（可以是整数或浮点数）；
+- String(value) - 把给定的值转换成字符串；
 
 用这三个函数之一转换值，将创建一个新值，存放由原始值直接转换成的值。这会造成意想不到的后果。
 
-    - usage examples
+- usage examples
+
+1. Boolean() 函数
+
+```javascript
+var b1 = Boolean("");       //false - 空字符串
+var b2 = Boolean("hello");      //true - 非空字符串
+var b1 = Boolean(50);       //true - 非零数字
+var b1 = Boolean(null);     //false - null
+var b1 = Boolean(0);        //false - 零
+var b1 = Boolean(new object()); //true - 对象
+```
+
+2. Number() 函数
+
+| 用法 | 结果 |
+| -------- | -------- |
+| Number(false) | 0 |
+| Number(true)  | 1 |
+| Number(undefined)  | NaN |
+| Number(null)  | 0 |
+| Number("1.2") | 1.2  |
+| Number("12")  | 12 |
+| Number("1.2.3")  | NaN |
+| Number(new object())  | NaN |
+| Number(50)     | 50 |
 
 
-    1. Boolean() 函数
+3. String() 函数
+强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：
 
-    ```javascript
-    var b1 = Boolean("");       //false - 空字符串
-    var b2 = Boolean("hello");      //true - 非空字符串
-    var b1 = Boolean(50);       //true - 非零数字
-    var b1 = Boolean(null);     //false - null
-    var b1 = Boolean(0);        //false - 零
-    var b1 = Boolean(new object()); //true - 对象
-    ```
-
-    2. Number() 函数
-
-    | 用法 | 结果 |
-    | -------- | -------- |
-    | Number(false) | 0 |
-    | Number(true)  | 1 |
-    | Number(undefined)  | NaN |
-    | Number(null)  | 0 |
-    | Number("1.2") | 1.2  |
-    | Number("12")  | 12 |
-    | Number("1.2.3")  | NaN |
-    | Number(new object())  | NaN |
-    | Number(50)     | 50 |
-
-
-    3. String() 函数
-    强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：
-
-    ```javascript
-    var s1 = String(null);  //"null"
-    var oNull = null;
-    var s2 = oNull.toString();  //会引发错误
-    ```
+```javascript
+var s1 = String(null);  //"null"
+var oNull = null;
+var s2 = oNull.toString();  //会引发错误
+```
 
 ## 5. 能进行比较的数据类型
 
-    + 简单数据类型（即原始值数据类型）可以直接进行比较。因为它们的值直接存储在变量访问的位置上——栈。
-    + 引用值数据类型（即所有属于Object类型的），不能直接进行比较。因为栈上存储的只是变量的一个指针，指向堆中变量的存储地址，也就是说其实变量的实际值是存储在堆上的。
++ 简单数据类型（即原始值数据类型）可以直接进行比较。因为它们的值直接存储在变量访问的位置上——栈。
++ 引用值数据类型（即所有属于Object类型的），不能直接进行比较。因为栈上存储的只是变量的一个指针，指向堆中变量的存储地址，也就是说其实变量的实际值是存储在堆上的。
 
