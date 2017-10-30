@@ -4,6 +4,7 @@
     - 引用值数据类型
     - 原始值与引用值的区分
     - 类型转换
+    - 能进行比较的数据类型
 
 ---
 ## 数据类型
@@ -26,7 +27,7 @@
 * object - 如果变量是一种引用类型或 Null 类型的
 * function - 函数对象
 
-**注释：**您也许会问，为什么 typeof 运算符对于 null 值会返回 "Object"。
+** 注释： **您也许会问，为什么 typeof 运算符对于 null 值会返回 "Object"。
 
 这实际上是 JavaScript最初实现中的一个错误，然后被 ECMAScript 沿用了。现在，null 被认为是对象的占位符，从而解释了这一矛盾，但从技术上来说，它仍然是原始值。
 
@@ -88,6 +89,9 @@ typeof 1/0 === 'NaN';
 ## 2. 引用值数据类型
 
 * Object
+
+如：Object\Array\Fuction\RegExp\Date等均为引用值类型。
+p.s.引用值类型的数据不能进行比较
 
 ### instanceof 运算符
 
@@ -186,45 +190,55 @@ myDate instanceof String;   // returns false
     ```
 
 * 强制转换
+
 ECMAScript 中可用的 3 种强制类型转换如下：
+
     - Boolean(value) - 把给定的值转换成 Boolean 型；
     - Number(value) - 把给定的值转换成数字（可以是整数或浮点数）；
     - String(value) - 把给定的值转换成字符串；
+
 用这三个函数之一转换值，将创建一个新值，存放由原始值直接转换成的值。这会造成意想不到的后果。
 
     - usage examples
 
+
     1. Boolean() 函数
-```javascript
-var b1 = Boolean("");       //false - 空字符串
-var b2 = Boolean("hello");      //true - 非空字符串
-var b1 = Boolean(50);       //true - 非零数字
-var b1 = Boolean(null);     //false - null
-var b1 = Boolean(0);        //false - 零
-var b1 = Boolean(new object()); //true - 对象
-```
+
+    ```javascript
+    var b1 = Boolean("");       //false - 空字符串
+    var b2 = Boolean("hello");      //true - 非空字符串
+    var b1 = Boolean(50);       //true - 非零数字
+    var b1 = Boolean(null);     //false - null
+    var b1 = Boolean(0);        //false - 零
+    var b1 = Boolean(new object()); //true - 对象
+    ```
 
     2. Number() 函数
 
-    |        用法      |    结果    |
-    |      --------   |  --------  |
-    |  Number(false) |  0  |
-    |  Number(true)  |  1 |
-    |  Number(undefined)  |  NaN |
-    |  Number(null)  |  0 |
-    |  Number("1.2")  | 1.2  |
-    |  Number("12")  |  12 |
-    |  Number("1.2.3")  | NaN |
-    |  Number(new object())  | NaN |
-    |  Number(50)     | 50 |
+    | 用法 | 结果 |
+    | -------- | -------- |
+    | Number(false) | 0 |
+    | Number(true)  | 1 |
+    | Number(undefined)  | NaN |
+    | Number(null)  | 0 |
+    | Number("1.2") | 1.2  |
+    | Number("12")  | 12 |
+    | Number("1.2.3")  | NaN |
+    | Number(new object())  | NaN |
+    | Number(50)     | 50 |
 
 
     3. String() 函数
-强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：
+    强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：
 
-```javascript
-var s1 = String(null);  //"null"
-var oNull = null;
-var s2 = oNull.toString();  //会引发错误
-```
+    ```javascript
+    var s1 = String(null);  //"null"
+    var oNull = null;
+    var s2 = oNull.toString();  //会引发错误
+    ```
+
+## 5. 能进行比较的数据类型
+
+    + 简单数据类型（即原始值数据类型）可以直接进行比较。因为它们的值直接存储在变量访问的位置上——栈。
+    + 引用值数据类型（即所有属于Object类型的），不能直接进行比较。因为栈上存储的只是变量的一个指针，指向堆中变量的存储地址，也就是说其实变量的实际值是存储在堆上的。
 
