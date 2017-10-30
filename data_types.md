@@ -91,6 +91,7 @@ typeof 1/0 === 'NaN';
 * Object
 
 如：Object\Array\Fuction\RegExp\Date等均为引用值类型。
+
 p.s.引用值类型的数据不能进行比较
 
 ### instanceof 运算符
@@ -228,6 +229,7 @@ var b1 = Boolean(new object()); //true - 对象
 
 
 3. String() 函数
+
 强制转换成字符串和调用 toString() 方法的唯一不同之处在于，对 null 和 undefined 值强制类型转换可以生成字符串而不引发错误：
 
 ```javascript
