@@ -55,3 +55,27 @@ function* 这种声明方式会定义一个生成器函数，返回一个Generat
     会导致生成器立即变成完成状态，即next()方法返回的对象done为true.如果 return 了一个值，那么这个值会作为下次调用 next() 方法返回的 value 值。
 
 * 生成器函数不能当构造函数使用
+
+### example
+
+```javascript
+function* anotherGenerator(i) {
+  yield i + 1;
+  yield i + 2;
+  yield i + 3;
+}
+
+function* generator(i){
+  yield i;
+  yield* anotherGenerator(i);
+  yield i + 10;
+}
+
+var gen = generator(10);
+
+console.log(gen.next().value); // 10
+console.log(gen.next().value); // 11
+console.log(gen.next().value); // 12
+console.log(gen.next().value); // 13
+console.log(gen.next().value); // 20
+```
