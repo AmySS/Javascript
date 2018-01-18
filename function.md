@@ -29,6 +29,7 @@ var foo = function() {...}
 ### Immediately-Invoked Function Expression (IIFE)
 ```javascript
 (function() { ... }());
+(function() { ... })();
 ```
 
 ## 2. function*
@@ -79,3 +80,5 @@ console.log(gen.next().value); // 12
 console.log(gen.next().value); // 13
 console.log(gen.next().value); // 20
 ```
+
+## 3. async function
