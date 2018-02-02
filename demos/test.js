@@ -8,12 +8,21 @@
 // }
 // a();
 // console.log(x);
-String.prototype.compare = function(b) {
-    let a = this.valueOf();
-    return a>b?1:-1;
-}
-let a =  'sdddfdf';
-a.compare('fdf');
-let b=undefined;
-console.log(a.compare('fdf'));
-console.log(a.compare(null));
+
+var x = 100;
+var inc = function(){
+  var x = 0;
+  return function(){
+    console.log(x++);
+  };
+};
+
+var inc1 = inc();
+var inc2 = inc();
+
+inc1();  // -> 0
+inc1();  // -> 1
+inc2();  // -> 0
+inc1();  // -> 2
+inc2();  // -> 1
+x;       // -> 100
